@@ -39,7 +39,7 @@ function init() {
     // object
 
     var loader = new THREE.STLLoader();
-    loader.load('http://192.168.0.118:8080/dl/2019100917455188125467988698', function (geometry) {
+    loader.load('http://192.168.0.118:8080/dl/2019100917475340157229171628', function (geometry) {
 
         console.log(geometry)
 
