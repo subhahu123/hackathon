@@ -1,0 +1,13 @@
+   <form target="iframe" method="POST" action="http://www.embossify.com/build"></form>
+
+
+    <input type="file" name="file" id="file" class="fileInput" accept="image/jpeg">
+    <input type="radio" name="mode" value="0" checked="">
+    <input type="radio" name="mode" value="1">
+    <input type="number" name="targetWidth" style="width:4em" value="120">
+    <input type="number" name="targetDepth" style="width:4em" value="5">
+
+
+
+    <button type="submit">upload</button>
+    </form>
