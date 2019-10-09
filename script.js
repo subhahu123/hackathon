@@ -15,7 +15,7 @@ const upload = (file) => {
     console.log(input.files[0]);
 
 
-    fetch('http://192.168.0.118:8080/set', { // Your POST endpoint
+    fetch('http://192.168.0.118:8080/android/set', { // Your POST endpoint
         method: 'POST',
         body: formData // This is your file object
     }).then(

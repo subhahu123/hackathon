@@ -1,19 +1,23 @@
 var container, camera, scene, renderer;
 
+
+
 init();
 animate();
 
 function init() {
 
-    container = document.createElement( 'div' );
-    document.body.appendChild( container );
-    container.className = "container" ;
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    container.className = "container";
 
     // renderer
 
-    renderer = new THREE.WebGLRenderer( { antialias: true } );
-    renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
-    container.appendChild( renderer.domElement );
+    renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
+    renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+    container.appendChild(renderer.domElement);
 
     // scene
 
@@ -21,31 +25,33 @@ function init() {
 
     // camera
 
-    camera = new THREE.PerspectiveCamera( 10, 0.7, 0.1, 10000 );
-    camera.position.set( 300, 500, 300 );
-    scene.add( camera ); // required, because we are adding a light as a child of the camera
+    camera = new THREE.PerspectiveCamera(10, 0.7, 0.1, 10000);
+    camera.position.set(300, 500, 300);
+    scene.add(camera); // required, because we are adding a light as a child of the camera
 
     // lights
 
-    scene.add( new THREE.AmbientLight( 0x222222 ) );
+    scene.add(new THREE.AmbientLight(0x222222));
 
-    var light = new THREE.PointLight( 0xffffff, 0.8 );
-    camera.add( light );
+    var light = new THREE.PointLight(0xffffff, 0.8);
+    camera.add(light);
 
     // object
 
     var loader = new THREE.STLLoader();
-    loader.load( './Mouse.stl', function ( geometry ) {
+    loader.load('./Mouse.stl', function (geometry) {
 
-        var material = new THREE.MeshPhongMaterial( { color: 0xff5533 } );
+        var material = new THREE.MeshPhongMaterial({
+            color: 0xff5533
+        });
 
-        var mesh = new THREE.Mesh( geometry, material );
+        var mesh = new THREE.Mesh(geometry, material);
 
-        scene.add( mesh );
+        scene.add(mesh);
 
-    } );
+    });
 
-    window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener('resize', onWindowResize, false);
 
 }
 
@@ -55,13 +61,13 @@ function onWindowResize() {
 
     camera.updateProjectionMatrix();
 
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
 }
 
 function animate() {
 
-    requestAnimationFrame( animate );
+    requestAnimationFrame(animate);
 
     render();
 
@@ -71,11 +77,27 @@ function render() {
 
     var timer = Date.now() * 0.0005;
 
-    camera.position.x = Math.cos( timer ) * 5;
-    camera.position.z = Math.sin( timer ) * 5;
+    camera.position.x = Math.cos(timer) * 5;
+    camera.position.z = Math.sin(timer) * 5;
 
-    camera.lookAt( scene.position );
+    camera.lookAt(scene.position);
 
-    renderer.render( scene, camera );
+    renderer.render(scene, camera);
+
+}
+
+
+
+
+
+function changeCameraPosition() {
+
+    var firstCamera = document.querySelector('#firstCamera');
+    var secondCamera = document.querySelector('#secondCamera');
+    var thirdCamera = document.querySelector('#thirdCamera');
+
+    console.log(firstCamera.value);
+
+    camera.position.set(firstCamera.value, secondCamera.value, thirdCamera.value);
 
 }
