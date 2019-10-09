@@ -39,7 +39,9 @@ function init() {
     // object
 
     var loader = new THREE.STLLoader();
-    loader.load('./Mouse.stl', function (geometry) {
+    loader.load('http://192.168.0.118:8080/dl/2019100917455188125467988698', function (geometry) {
+
+        console.log(geometry)
 
         var material = new THREE.MeshPhongMaterial({
             color: 0xff5533
@@ -97,7 +99,11 @@ function changeCameraPosition() {
     var thirdCamera = document.querySelector('#thirdCamera');
 
     console.log(firstCamera.value);
+    console.log(secondCamera.value);
 
+    console.log(thirdCamera.value);
+
+    
     camera.position.set(firstCamera.value, secondCamera.value, thirdCamera.value);
 
 }
