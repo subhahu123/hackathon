@@ -59,7 +59,7 @@
 
                 // camera
 
-                camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 1, 10000 );
+                camera = new THREE.PerspectiveCamera( 10, 0.7, 0.1, 10000 );
                 camera.position.set( 300, 500, 300 );
                 scene.add( camera ); // required, because we are adding a light as a child of the camera
 
@@ -73,7 +73,7 @@
                 // object
 
                 var loader = new THREE.STLLoader();
-                loader.load( './example.stl', function ( geometry ) {
+                loader.load( './Mouse.stl', function ( geometry ) {
 
                     var material = new THREE.MeshPhongMaterial( { color: 0xff5533 } );
 
